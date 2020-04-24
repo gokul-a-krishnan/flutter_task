@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertask/teams/teamlist.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
           Icon(
             Icons.person,
             size: 30,
-            color: Colors.amber,
+            color: Colors.white,
           ),
         ],
       ),
@@ -29,7 +30,12 @@ class _HomePageState extends State<HomePage> {
             Container(
               padding: EdgeInsets.all(4),
               child: FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TeamList()),
+                  );
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
