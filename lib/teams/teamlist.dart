@@ -6,6 +6,8 @@ class TeamList extends StatefulWidget {
 }
 
 class _TeamListState extends State<TeamList> {
+  TextEditingController nameController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,19 +22,87 @@ class _TeamListState extends State<TeamList> {
               Container(
                 height: 50,
                 color: Colors.lightBlue[300],
-                child: const Center(child: Text('Team A')),
+                child: FlatButton(
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Add Team"),
+                              content: Text('Select edit or delete'),
+                              actions: <Widget>[
+                                FlatButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  child: Text('Delete'),
+                                ),
+                                FlatButton(
+                                  onPressed: () {},
+                                  child: Text('Edit'),
+                                )
+                              ],
+                            );
+                          });
+                    },
+                    child: Container(child: Center(child: Text('Team A')))),
               ),
               Container(
                 height: 50,
                 color: Colors.lightBlue[600],
-                child: const Center(child: Text('Team B')),
+                child: FlatButton(
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Add Team"),
+                              content: Text('Select edit or delete'),
+                              actions: <Widget>[
+                                FlatButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  child: Text('Delete'),
+                                ),
+                                FlatButton(
+                                  onPressed: () {},
+                                  child: Text('Edit'),
+                                )
+                              ],
+                            );
+                          });
+                    },
+                    child:
+                        Container(child: const Center(child: Text('Team B')))),
               ),
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
-          onPressed: () {},
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text("Add Team"),
+                    content: TextField(
+                      decoration:
+                          new InputDecoration(hintText: 'Enter Name Here'),
+                      controller: nameController,
+                      maxLengthEnforced: false,
+                      maxLength: 15,
+                    ),
+                    actions: <Widget>[
+                      FlatButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text('Cancel'),
+                      ),
+                      FlatButton(
+                        onPressed: () {},
+                        child: Text('Add'),
+                      )
+                    ],
+                  );
+                });
+          },
           backgroundColor: Colors.blue,
           foregroundColor: Colors.white,
         ));
